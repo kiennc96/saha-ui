@@ -1,0 +1,72 @@
+---
+description: Hàm phải test được; tránh ràng buộc cứng (hard coupling)
+alwaysApply: true
+---
+
+# Hàm phải test được — không ràng buộc cứng
+
+Mọi hàm/logic nghiệp vụ phải **có thể kiểm thử độc lập**: không phụ thuộc cứng vào global, DOM cụ thể, I/O, hay singleton khó thay thế.
+
+## Nguyên tắc
+
+- **Thuần hóa phần lõi**: tính toán / quyết định nghiệp vụ nhận input → trả output; side-effect (DOM, `fetch`, toast, session) để ở biên.
+- **Truyền phụ thuộc vào** (parameter / constructor), không gọi cứng `$_GET`, `document`, `showToast`, DB global bên trong hàm core.
+- **Không hard-code** selector, URL, timeout, ID cố định trong logic nghiệp vụ — đưa ra tham số hoặc config.
+- **Trả về giá trị** thay vì chỉ mutate ẩn; dễ assert trong test.
+
+## Ví dụ
+
+```js
+// ❌ BAD — ràng buộc cứng DOM + global
+function updateCountdown() {
+  const el = document.getElementById('cd');
+  const end = Date.parse('2026-12-31');
+  el.textContent = ...;
+  showToast('...');
+}
+
+// ✅ GOOD — core thuần + biên mỏng
+function getRemainingMs(nowMs, endMs) {
+  return Math.max(0, endMs - nowMs);
+}
+function formatCountdown(ms) { /* chỉ format */ }
+function renderCountdown(el, text) { el.textContent = text; }
+
+function startCountdown(el, endMs, { now = () => Date.now(), onTick } = {}) {
+  const tick = () => {
+    const text = formatCountdown(getRemainingMs(now(), endMs));
+    renderCountdown(el, text);
+    onTick?.(text);
+  };
+  tick();
+  return setInterval(tick, 1000);
+}
+```
+
+```php
+// ❌ BAD
+function getHotline(): string {
+    return '0976 21 21 71'; // hard-code + khó fake
+}
+
+// ✅ GOOD
+function getHotline(array $config): string {
+    return (string) ($config['hotline_hn'] ?? '');
+}
+```
+
+## Ràng buộc cần tránh
+
+| Cứng | Thay bằng |
+|------|-----------|
+| `document.getElementById('...')` trong core | nhận `el` / `root` từ ngoài |
+| Gọi `showToast` / API / DB trực tiếp trong hàm tính toán | callback / port / service inject |
+| Magic number, URL, copy cố định | hằng số config / tham số |
+| Phụ thuộc thời gian thật `Date.now()` không thay được | inject `now()` |
+| Đọc `$_SESSION` / global state ẩn | truyền state cần thiết vào |
+
+## Khi viết / sửa
+
+1. Hỏi: “Gọi hàm này trong unit test **không** cần browser/DB được không?” — nếu không → tách phần biên.
+2. Viết hàm mới: ưu tiên signature rõ (`input → output`), options object cho phụ thuộc tùy chọn.
+3. Không nhồi test bằng cách mock cả thế giới — hãy giảm coupling trước.

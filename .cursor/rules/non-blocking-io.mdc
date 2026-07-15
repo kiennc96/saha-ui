@@ -1,0 +1,89 @@
+---
+description: Tác vụ nặng/nền và I/O không được block UI, luồng JS, hay request PHP
+alwaysApply: true
+---
+
+# Không block UI / luồng chính / request PHP
+
+Tác vụ nặng, nền, song song và mọi thao tác I/O (file, API, DB, mạng…) **không chặn** luồng chính UI (JS) và **không giữ request PHP** lâu hơn mức cần thiết.
+
+## Nguyên tắc chung
+
+- **Biên mỏng, phản hồi sớm**: nhận request/sự kiện → trả phản hồi nhẹ (HTML/JSON/loading) → việc nặng chạy nền hoặc bất đồng bộ.
+- **I/O có timeout**: mọi gọi file/API/DB/cURL đều có giới hạn thời gian; không chờ vô hạn.
+- **Song song khi độc lập**: không xếp tuần tự những việc không phụ thuộc nhau (JS `Promise.all`, PHP `curl_multi` / song song job).
+- **Giới hạn concurrency**: song song có trần để tránh nghẽn DB/API.
+
+## JavaScript (UI)
+
+- Không XHR/`file` đồng bộ; không vòng busy-wait.
+- Tính nặng: chia chunk / `requestIdleCallback` / `Worker`.
+- Feedback ngay: spinner, disabled, skeleton; hỗ trợ `AbortController`.
+
+## PHP (server) — cùng yêu cầu
+
+PHP xử lý **từng request**: mọi `file_*`, `curl`, PDO, API bên thứ ba chạy trong request đó đều **chặn user đang chờ**. Vì vậy:
+
+- **Request HTTP chỉ làm việc ngắn**: render trang, trả JSON, enqueue job — không đồng bộ hóa hàng nghìn bản ghi hay gọi API chậm từng cái trong vòng `foreach`.
+- **Việc dài → nền**: queue / cron / worker / `fastcgi_finish_request()` + tiếp tục (khi phù hợp) — không bắt browser treo.
+- **I/O có timeout tường minh**: `CURLOPT_TIMEOUT`, PDO/`mysqli` timeout, `stream_context` cho `file_get_contents` — cấm chờ mặc định vô hạn.
+- **Không block vì I/O không cần trên hot path**: đọc file lớn, gọi API giá, sync kho… không nhét vào lúc render header/nav nếu có thể cache hoặc lazy/async.
+- **Gọi ngoài độc lập → song song**: `curl_multi_*` (hoặc HTTP client async) thay vì nhiều `curl_exec` tuần tự.
+- **DB**: tránh N+1; batch/query gọn; không `sleep` hay poll vòng trong request web.
+- **Stream khi phù hợp**: đọc/ghi file lớn theo chunk, không `file_get_contents` cả file khổng lồ vào memory rồi xử lý một cục nếu có thể tránh.
+
+## Ví dụ JS
+
+```js
+// ❌ BAD
+const data = syncXHR('/api/products');
+heavyFilter(data);
+
+// ✅ GOOD
+const data = await fetchProducts({ signal });
+await renderInChunks(data);
+```
+
+## Ví dụ PHP
+
+```php
+// ❌ BAD — giữ request chờ job dài + I/O tuần tự
+foreach ($ids as $id) {
+    $json = file_get_contents("https://api.example/" . $id); // không timeout
+    heavyTransform($json);
+}
+
+// ✅ GOOD — request chỉ nhận việc; worker xử lý nền
+enqueueJob(new SyncProductsJob($ids));
+return jsonResponse(['queued' => true]);
+```
+
+```php
+// ❌ BAD — 3 API chậm gọi tuần tự trong trang
+$a = curlFetch($urlA);
+$b = curlFetch($urlB);
+$c = curlFetch($urlC);
+
+// ✅ GOOD — song song + timeout
+[$a, $b, $c] = curlFetchMany([$urlA, $urlB, $urlC], timeoutSeconds: 3);
+```
+
+```php
+// ❌ BAD — render page vừa query nặng không giới hạn
+$all = $db->query('SELECT * FROM products')->fetchAll();
+
+// ✅ GOOD — paginate / cache / chỉ field cần
+$page = fetchProductPage($db, page: $page, perPage: 24);
+```
+
+## Checklist
+
+### JS
+1. Click/scroll/gõ vẫn mượt; có loading; hủy được khi đổi filter/rời trang.
+2. Không sync I/O trên main thread.
+
+### PHP
+3. Request web hoàn thành nhanh (vài trăm ms–vài giây tùy trang) — việc > vài giây đưa vào queue/cron.
+4. Mọi cURL / HTTP / stream / DB đều có **timeout**.
+5. Không `foreach` + gọi API/file chậm trên hot path; ưu tiên batch, cache, song song có giới hạn.
+6. Không `sleep` / poll vô hạn trong request phục vụ user.
