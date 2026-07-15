@@ -1,0 +1,32 @@
+---
+description: Performance front-end — ảnh, CLS, CSS/JS tối giản, không block render
+alwaysApply: true
+---
+
+# Performance front-end
+
+Giữ trang nhẹ và phản hồi nhanh — đặc biệt catalog / tin tức.
+
+## Bắt buộc
+
+- Ảnh lớn: kích thước hợp lý (`w=` Unsplash / CDN), `loading="lazy"` dưới fold.
+- Tránh layout shift: kích thước ảnh / skeleton / min-height vùng động.
+- Không thêm thư viện nặng (jQuery, full animation lib) nếu CSS/JS nhỏ đủ.
+- CSS/JS mới: đúng file domain; không nhồi god bundle.
+- Script module sau nội dung; không sync XHR trên main thread (rule non-blocking).
+- Font: giữ preconnect Google Fonts; tránh tải thêm family không dùng.
+
+## Ưu tiên
+
+- Lặp UI → component PHP (ít HTML lệch, dễ cache tư duy).
+- Render list lớn: chia frame / deferred (pattern `setHtmlQueue`).
+
+## Cấm
+
+- Autoplay video nền nặng; ảnh 4K không nén trên hero.
+- Inline CSS/JS khổng lồ trong mọi trang nếu đã có asset dùng chung.
+
+## Checklist
+
+1. Hero/ LCP có bị ảnh quá lớn?
+2. Thêm dependency — có thay bằng 20 dòng CSS/JS không?

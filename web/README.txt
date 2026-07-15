@@ -26,14 +26,19 @@ web/
   assets/js/lib/         # JS theo nghiệp vụ
 ```
 
+## Hướng visual (đã chốt)
+
+- Chủ: Soft utilitarian · Trang chủ: + Bold brand · Tin: Editorial · PDP: Technical  
+- Chi tiết: `docs/UI-STANDARD.md` + `.cursor/rules/visual-direction.mdc`
+
 ## Chuẩn làm việc (tóm tắt)
 
 1. UI lặp → `$view->render()` + `includes/components/` (đã có breadcrumb, news-card, product-card, faq-list).
-2. Style qua token / chrome / domain — không mỗi người một kiểu CSS.
+2. Style theo hướng visual + token / chrome / domain — không mỗi người một kiểu.
 3. Không pha Bootstrap / Tailwind / framework khác khi chưa migrate cả repo.
 4. JS mới → `assets/js/lib/`.
 
-Chi tiết rules Cursor: `.cursor/rules/ui-consistency.mdc` và các rule SRP/testable/non-blocking.
+Chi tiết rules Cursor: `.cursor/rules/` — gồm SRP, UI consistency, modern UI/micro-interaction, a11y, responsive, performance, SEO, microcopy VI, form UX, design tokens, UI states, e-commerce UX, PR checklist.
 
 | Rule | Cách làm trong code |
 |------|---------------------|

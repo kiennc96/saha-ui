@@ -1,0 +1,35 @@
+---
+description: Hướng visual SAHA đã chốt — Soft utilitarian + biến thể theo loại trang
+alwaysApply: true
+---
+
+# Hướng giao diện đã chốt (SAHA)
+
+**Không đổi** sang style khác khi làm UI mới. Một hệ token; skin khác nhau theo **loại trang**.
+
+## Phong cách chủ: Soft utilitarian
+
+- Catalog / listing / chrome: lưới rõ, card nhẹ, bo góc vừa, shadow nhẹ khi hover.
+- Typography chắc, dễ quét; CTA cam; brand xanh navy.
+- Micro-interaction ngắn (150–250ms): hover card, nút, FAQ — không parallax/glow.
+- Tránh: purple SaaS, cream-serif terracotta, glass/neon, báo giấy dày.
+
+## Biến thể theo loại trang
+
+| Loại trang | Style | Ghi chú |
+|------------|--------|---------|
+| Toàn site / catalog / thương hiệu / ứng dụng | **Soft utilitarian** | `catalog.css`, chrome, product-card |
+| Trang chủ | Soft + **Bold brand** | Hero mạnh, CTA cam nổi, khối trust ngắn — không nhồi stat/card vào hero |
+| Tin tức / kiến thức | **Editorial commerce** | Ảnh lớn, typography bài viết, featured grid — vẫn token SAHA |
+| PDP chi tiết SP | **Technical / data-light** | Thông số, anchor, calculator, badge — hierarchy kỹ thuật rõ |
+
+## Nguyên tắc triển khai
+
+1. Sửa UI → xác định loại trang → áp đúng hàng trong bảng trên.
+2. Màu/spacing chỉ từ `tokens.css`.
+3. Component dùng chung giữ soft utilitarian; trang tin/PDP chỉ thêm skin domain, không fork card core.
+4. Hero trang chủ: brand + 1 headline + 1 câu + CTA + visual — không overlay badge rời / schedule / stat strip.
+
+## Khi nghi ngờ
+
+Ưu tiên **dễ tìm hàng + báo giá sỉ** hơn “đẹp showcase”. Soft utilitarian thắng.

@@ -1,0 +1,28 @@
+---
+description: Form & validation UX — lỗi rõ, loading, không double-submit
+alwaysApply: true
+---
+
+# Form & validation UX
+
+Form (search, báo giá, newsletter, liên hệ) phải dễ hoàn thành và báo lỗi rõ.
+
+## Bắt buộc
+
+- Label rõ; placeholder không thay label.
+- Validate tối thiểu: required, email format — báo **cạnh field** + tóm tắt nếu cần.
+- Submit: disable nút + trạng thái loading khi đang gửi; chống double-submit.
+- Thành công: toast hoặc message cố định trong form — nói rõ “đã nhận”.
+- Lỗi mạng/server: cho Thử lại; không nuốt lỗi im lặng.
+- Không chỉ `alert()` cho mọi lỗi (ưu tiên UI trong trang + toast nhẹ).
+
+## Async
+
+- Gọi API/mail: timeout, không freeze UI (rule non-blocking).
+- Hủy được khi user rời trang (AbortController khi có fetch).
+
+## Checklist
+
+1. Tab tới field lỗi có thấy message?
+2. Submit 2 lần liên tiếp có bị trùng không?
+3. Trạng thái rỗng / thành công / lỗi đều có?

@@ -1,0 +1,30 @@
+---
+description: PR/UI checklist — tái dùng component, không CSS lệch chuẩn, ghi chú visual
+alwaysApply: true
+---
+
+# Git / PR khi đụng UI
+
+Thay đổi giao diện phải **dễ review** và không phá chuẩn component.
+
+## Trước khi mở PR / giao việc
+
+- [ ] UI lặp → đã `$view->render` component có sẵn? (breadcrumb, news-card, product-card, faq-list…)
+- [ ] Không thêm framework CSS/JS thứ hai.
+- [ ] Token màu/spacing — không hard-code lệch brand.
+- [ ] Hover/focus/loading/empty/error (nếu control mới).
+- [ ] Mobile 375px không vỡ.
+- [ ] title/description trang cập nhật nếu trang mới.
+- [ ] JS mới nằm `assets/js/lib/` — core testable.
+
+## Mô tả thay đổi UI
+
+- Nêu **trang / component** đụng tới.
+- Nếu đổi visual lớn: mô tả ngắn trước/sau (hoặc ảnh khi có).
+- Breaking partial: ghi file `includes/components/*` bị đổi API `$data`.
+
+## Cấm trong PR UI
+
+- Copy-paste nguyên card HTML thay vì sửa component.
+- File CSS “temp”, “fix”, “new-style” cá nhân.
+- Commit kèm secrets / `.env`.

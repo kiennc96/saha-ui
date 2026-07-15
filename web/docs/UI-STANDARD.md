@@ -2,7 +2,18 @@
 
 ## Vì sao có tài liệu này
 
-Tránh tình trạng mỗi người một kiểu CSS / HTML. **Một quy ước** — đã ghi trong `.cursor/rules/ui-consistency.mdc`.
+Tránh tình trạng mỗi người một kiểu CSS / HTML. **Một quy ước** — xem `.cursor/rules/ui-consistency.mdc` và `.cursor/rules/visual-direction.mdc`.
+
+## Hướng visual đã chốt
+
+| Phạm vi | Phong cách |
+|---------|------------|
+| Chủ đạo (catalog, chrome, hầu hết trang) | **Soft utilitarian** |
+| Trang chủ | Soft + **Bold brand** (hero mạnh, CTA cam) |
+| Tin tức / kiến thức | **Editorial commerce** |
+| PDP sản phẩm | **Technical / data-light** |
+
+Chi tiết + cấm style lệch: `.cursor/rules/visual-direction.mdc`.
 
 ## Stack đã chốt
 

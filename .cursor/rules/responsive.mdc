@@ -1,0 +1,34 @@
+---
+description: Responsive mobile-first — breakpoint chuẩn, touch target, không overflow
+alwaysApply: true
+---
+
+# Responsive / breakpoint
+
+Ưu tiên **mobile-first**. Desktop là mở rộng, không phải bản “cắt bớt” của desktop.
+
+## Breakpoint chuẩn dự án
+
+Dùng các ngưỡng đã có / gần đúng:
+
+| Tên | Gợi ý |
+|-----|--------|
+| Small | ≤650–720px |
+| Medium | ≤980–1000px |
+| Large | >1000px |
+
+Không invent breakpoint lạ (577px, 813px…) trừ khi bắt buộc và ghi chú trong CSS.
+
+## Bắt buộc
+
+- Touch target ≥ ~40–44px cho nút/link chính trên mobile.
+- Không overflow ngang (`100vw` + padding cẩn thận; bảng/pre cuộn trong container).
+- Nav mobile: toggle + menu mở được (pattern `#mainNav.open`).
+- Ảnh `max-width: 100%`; grid chuyển 1 cột khi hẹp.
+- Typography: không để tiêu đề tràn / cắt chữ.
+
+## Checklist
+
+1. 375px và 768px và ≥1200px — layout ổn?
+2. Mega menu trên mobile: accordion, không dropdown tràn màn hình?
+3. Sticky/float (cart, hotline) không che CTA chính?

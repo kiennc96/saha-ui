@@ -1,0 +1,37 @@
+---
+description: State UI chuẩn — default/hover/focus/active/disabled/loading/empty/error
+alwaysApply: true
+---
+
+# State UI chuẩn
+
+Mọi control/component tương tác cần phủ các trạng thái sau (khi áp dụng được):
+
+| State | Mục đích |
+|-------|----------|
+| default | Trạng thái nghỉ |
+| hover | Desktop gợi ý tương tác |
+| focus / focus-visible | Bàn phím / a11y |
+| active / pressed | Đang nhấn |
+| disabled | Không tương tác được |
+| loading | Đang xử lý async |
+| empty | Không có dữ liệu |
+| error | Lỗi / invalid |
+
+## Quy ước class / ARIA
+
+- Ưu tiên class có chủ đích: `.is-open`, `.is-loading`, `.is-active`, `.is-disabled` (hoặc attribute `disabled`).
+- Loading: spinner/text “Đang xử lý…” + `aria-busy` khi phù hợp.
+- Empty: một câu + CTA phụ (vd. “Chưa có bài viết”, “Xem sản phẩm”).
+- Error: message + hướng sửa; không chỉ viền đỏ.
+
+## Cấm
+
+- Chỉ style `:hover` mà quên `:focus-visible`.
+- Disabled vẫn click được / vẫn submit.
+- Empty = vùng trắng im lặng.
+
+## Checklist
+
+1. Nút CTA chính có đủ hover + focus + disabled + loading?
+2. List card / FAQ / filter có empty & error path không?

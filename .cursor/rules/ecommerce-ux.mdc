@@ -1,0 +1,33 @@
+---
+description: E-commerce UX SAHA — giá, tồn, giỏ, báo giá sỉ, trust signal thống nhất
+alwaysApply: true
+---
+
+# E-commerce UX (SAHA)
+
+Luồng mua / tư vấn sỉ phải **đọc được ngay** trên card và PDP.
+
+## Chuẩn hiển thị sản phẩm
+
+- Tên rõ; giá nổi (màu nguy hiểm/đỏ giá theo pattern hiện có); đơn vị (đ).
+- Tồn kho / giao hàng: câu ngắn (“Còn hàng · Giao nhanh”) — thống nhất class `.stock`.
+- Badge: “Bán chạy”, “Chính hãng”, khuyến mãi — không chồng quá 2–3 badge.
+- CTA card: thêm giỏ + tư vấn / xem chi tiết — giữ pattern `product-card`.
+
+## Báo giá & sỉ
+
+- CTA “Báo giá sỉ” / “Nhận báo giá” luôn thấy trên flow B2B (header quote, CTA strip).
+- Form báo giá: nêu cần gì (SL, màu, địa điểm) trong microcopy.
+- Không hứa giá ảo trên UI nếu chưa có engine giá.
+
+## Giỏ & phản hồi
+
+- Thêm giỏ → cập nhật bubble + toast (không reload).
+- Qty: min 1; không âm.
+- Trust: chính hãng, VAT, hotline — dùng chrome/footer sẵn, không block hero bằng quá nhiều trust badge.
+
+## Checklist
+
+1. Card có giá + tồn + CTA đủ?
+2. PDP: giá / qty / mua / báo giá / FAQ có hierarchy rõ?
+3. Khuyến mãi: điều kiện / HSD / copy mã có micro-interaction copy + toast?

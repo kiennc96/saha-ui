@@ -1,0 +1,47 @@
+---
+description: Giao diện hiện đại + micro-interaction có chủ đích; motion phục vụ UX, không trang trí thừa
+alwaysApply: true
+---
+
+# UI hiện đại & micro-interaction
+
+Mọi thay đổi giao diện hướng tới **hiện đại, rõ hierarchy, phản hồi nhanh**. Motion chỉ để hỗ trợ hiểu hành vi — không trang trí ồn.
+
+## Cảm giác hiện đại (bắt buộc nghĩ tới)
+
+- Hierarchy rõ: brand / tiêu đề / CTA / nội dung phụ — một điểm nhấn chính mỗi viewport.
+- Spacing nhịp nhàng theo token; tránh dồn cụm hoặc “card trong card” vô ích.
+- Tương phản chữ đọc được; hover/focus/active trạng thái rõ.
+- Responsive: mobile không cắt chữ, không overflow ngang, touch target đủ lớn (~44px).
+- Giữ brand SAHA (xanh / cam) — không đổi theme “AI default” (tím gradient, cream-serif, glow tím…).
+
+## Micro-interaction — làm gì
+
+| Tình huống | Gợi ý |
+|---|---|
+| Hover link/nút/card | Đổi màu, underline, translateY nhẹ, shadow nhẹ — ≤150–250ms |
+| Click / submit | Feedback ngay (pressed, spinner, disable nút, toast) |
+| Mega menu / FAQ | Mở/đóng mượt; trạng thái `aria-expanded` / class `open` rõ |
+| Thêm giỏ / copy mã | Toast hoặc badge cập nhật — không reload |
+| Scroll / sticky | Passive dụt với `prefers-reduced-motion`; scroll spy không nhảy giật |
+
+## Micro-interaction — không làm
+
+- Parallax / confetti / glow liên tục / animation loop vô nghĩa.
+- Thời gian > 400ms cho hover thường.
+- Motion chặn click hoặc làm layout nhảy (CLS).
+- Tự ý thêm thư viện animation nặng nếu CSS/`requestAnimationFrame` đủ.
+
+## Kỹ thuật
+
+- Ưu tiên CSS `transition` / `@keyframes` ngắn; JS chỉ khi cần (countdown, carousel logic).
+- Tôn trọng `prefers-reduced-motion: reduce` → tắt/ giảm animation.
+- Không block UI (xem rule non-blocking): loading state async, không sync freeze.
+- Mỗi interaction mới: đặt tên class/state rõ (`.is-open`, `.is-loading`) — tái dùng, không inline style cảm tính.
+
+## Checklist nhanh khi sửa UI
+
+1. Có trạng thái hover/focus/disabled đầy đủ?
+2. User hành động → có phản hồi ≤ 100–200ms (dù chỉ spinner)?
+3. Motion có giúp hiểu UI không — hay chỉ “cho đẹp”?
+4. Giảm motion khi `prefers-reduced-motion`?

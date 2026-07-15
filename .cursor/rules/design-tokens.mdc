@@ -1,0 +1,31 @@
+---
+description: Design tokens bắt buộc — màu/spacing/radius từ tokens.css; cấm hard-code lung tung
+alwaysApply: true
+---
+
+# Design tokens bắt buộc
+
+Mọi giá trị thiết kế lặp lại đi qua **token** — nguồn: `assets/css/tokens.css`.
+
+## Dùng token cho
+
+- Màu: `--blue`, `--orange`, `--ink`, `--muted`, `--line`, `--soft`, …
+- Layout: `--container`, `--radius`, `--shadow`
+- Spacing/type scale: ưu tiên biến nếu đã có; thiếu thì **thêm token** rồi mới dùng.
+
+## Bắt buộc khi thêm style
+
+1. Kiểm tra token đã có chưa.
+2. Chưa có → bổ sung vào `tokens.css` (đặt tên rõ: `--danger`, `--space-md`…).
+3. Component/page CSS chỉ `var(--…)`.
+
+## Cấm
+
+- Mỗi trang một mã màu “gần giống” (`#084ca6` vs `#084da8` vs `#0b52a4`) tự invent.
+- Magic number spacing rải rác không hệ thống (13px, 17px, 19px…) khi có thể gom.
+- Đổi brand sang theme ngoài (tím, cream-serif, glow) — xem modern-ui + ui-consistency.
+
+## Checklist
+
+1. Hex mới — đã có token gần đúng chưa?
+2. Đổi brand 1 chỗ (`tokens.css`) có lan được không?

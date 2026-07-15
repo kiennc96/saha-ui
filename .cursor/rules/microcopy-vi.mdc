@@ -1,0 +1,31 @@
+---
+description: Microcopy tiếng Việt — giọng SAHA, CTA rõ, không lorem/lệch ngữ cảnh
+alwaysApply: true
+---
+
+# Content & microcopy (VI)
+
+Chữ trên UI theo giọng **Tổng kho keo dán SAHA**: rõ, kỹ thuật vừa phải, hướng hành động.
+
+## Giọng điệu
+
+- Xưng hô: trung tính (bạn / quý khách khi trang trọng); tránh “âng ẩng” hoặc jargon EN thừa.
+- Ưu tiên lợi ích + hành động: “Nhận báo giá”, “Xem sản phẩm”, “Tư vấn kỹ thuật”.
+- Thuật ngữ ngành đúng: silicone, trám khe, TDS, định mức — giải thích ngắn nếu cần.
+
+## Bắt buộc
+
+- CTA là động từ + mục tiêu rõ.
+- Toast / lỗi / trống: câu hoàn chỉnh, hướng xử lý (“Thử lại”, “Kiểm tra email”).
+- Không lorem ipsum, “test”, “asdf”, placeholder giả làm copy thật trên bản giao cho user.
+- Không trộn 2 ngôn ngữ trong một câu nếu không cần (giữ tên thương hiệu EN gốc: Apollo, Loctite…).
+
+## Cấm
+
+- CTA mơ hồ: “Click here”, “Submit”, “Tìm hiểu thêm” hàng loạt không ngữ cảnh.
+- Viết hoa toàn câu / spam dấu chấm than.
+
+## Checklist
+
+1. Người thợ / đại lý đọc có hiểu ngay cần làm gì?
+2. Copy có khớp brand SAHA (kho, sỉ, kỹ thuật)?

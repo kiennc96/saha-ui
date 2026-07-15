@@ -1,0 +1,30 @@
+---
+description: Accessibility — focus, ARIA, contrast, bàn phím, form có label
+alwaysApply: true
+---
+
+# Accessibility (a11y)
+
+Giao diện phải dùng được bằng bàn phím và hỗ trợ trình đọc màn hình ở mức cơ bản.
+
+## Bắt buộc
+
+- Mọi control tương tác: focus visible rõ (không `outline: none` mà không thay thế).
+- `<button>` cho hành động; `<a href>` chỉ khi điều hướng thật.
+- Form: mọi input có `<label>` hoặc `aria-label`; lỗi gắn với field (`aria-describedby` / `aria-invalid`).
+- Icon-only button: luôn có `aria-label`.
+- Ảnh có ý nghĩa: `alt` mô tả; ảnh trang trí: `alt=""`.
+- Mega menu / FAQ / modal: `aria-expanded`, Escape đóng được (đã có pattern nav).
+- Contrast chữ/nền đủ đọc (tránh xám nhạt trên nền sáng).
+
+## Cấm
+
+- Click-only không bàn phím (div onclick không role/tabindex hợp lệ).
+- Dựa mỗi màu để báo lỗi (thêm icon/text).
+- Animation bắt buộc khi user chọn giảm motion (xem rule modern-ui).
+
+## Checklist
+
+1. Tab hết flow chính (menu, search, CTA, form)?
+2. Focus không bị “nuốt”?
+3. Toast/ thông báo không phải thông tin duy nhất quan trọng?

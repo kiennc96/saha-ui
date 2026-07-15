@@ -1,0 +1,33 @@
+---
+description: SEO on-page — title, description, heading, alt, URL sạch
+alwaysApply: true
+---
+
+# SEO on-page
+
+Mỗi trang public phải có tín hiệu SEO cơ bản rõ ràng (qua `PageContext` + markup).
+
+## Bắt buộc
+
+- `$pageTitle` / `$pageDescription` riêng, có nghĩa, không trùng hàng loạt.
+- Một `<h1>` chính mỗi trang; heading giảm dần hợp lý (`h2` section…).
+- Link nội bộ dùng `.php` thật / anchor rõ (`san-pham.php`, `#faq`).
+- Ảnh nội dung: `alt` mô tả (sản phẩm, bài viết).
+- URL/file name tiếng Việt không dấu, gạch ngang (đã theo convention hiện có).
+
+## Nên có khi mở rộng
+
+- Open Graph cơ bản (`og:title`, `og:description`, `og:image`) khi làm share.
+- JSON-LD Product / Article / FAQ khi có dữ liệu thật từ backend.
+- Canonical khi xuất hiện bản trùng.
+
+## Cấm
+
+- Nhiều `h1`; title “SAHA” giống nhau mọi trang.
+- Nội dung quan trọng chỉ nằm trong ảnh không text.
+- `#` giả link cho toàn bộ điều hướng chính.
+
+## Checklist
+
+1. Title/description phân biệt trang chưa?
+2. H1 khớp nội dung chính?
