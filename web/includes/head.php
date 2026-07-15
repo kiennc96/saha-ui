@@ -1,3 +1,6 @@
+<?php
+declare(strict_types=1);
+
 /** @var \Saha\SiteConfig $config */
 /** @var \Saha\PageContext $page */
 /** @var \Saha\AssetUrl $assets */

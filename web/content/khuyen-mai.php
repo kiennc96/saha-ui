@@ -1,4 +1,13 @@
-<div class="breadcrumb"><div class="container"><a href="index.php">Trang chủ</a><span>›</span><b>Khuyến mãi</b></div></div>
+<?php
+/** @var \Saha\View $view */
+$view->render('breadcrumb', [
+    'variant' => 'bar',
+    'items' => [
+        ['label' => 'Trang chủ', 'href' => 'index.php'],
+        ['label' => 'Khuyến mãi'],
+    ],
+]);
+?>
 
   <main>
     <section class="promo-hero"><div class="container hero-grid">
@@ -57,12 +66,18 @@
       </div>
     </div></section>
 
-    <section class="section" id="faq"><div class="container"><h2 class="section-title">Câu hỏi về khuyến mãi</h2><div class="faq-list">
-      <div class="faq-item open"><button class="faq-q">Có thể dùng đồng thời nhiều mã giảm giá không?<span>＋</span></button><div class="faq-a">Mỗi đơn hàng thường chỉ áp dụng một mã giảm giá, trừ khi thể lệ chương trình ghi rõ được phép cộng dồn.</div></div>
-      <div class="faq-item"><button class="faq-q">Giá sỉ có được áp dụng thêm voucher không?<span>＋</span></button><div class="faq-a">Tùy chương trình. Một số báo giá dự án đã là mức giá riêng nên không cộng thêm voucher bán lẻ.</div></div>
-      <div class="faq-item"><button class="faq-q">Khuyến mãi có áp dụng cho tất cả màu và quy cách không?<span>＋</span></button><div class="faq-a">Không nhất thiết. Danh sách mã hàng, màu và quy cách áp dụng được ghi trong thể lệ từng chương trình.</div></div>
-      <div class="faq-item"><button class="faq-q">Sản phẩm khuyến mãi có được xuất hóa đơn VAT không?<span>＋</span></button><div class="faq-a">Có. SAHA hỗ trợ xuất hóa đơn theo giá trị thực tế thanh toán và quy định hiện hành.</div></div>
-    </div></div></section>
+    <section class="section" id="faq"><div class="container"><h2 class="section-title">Câu hỏi về khuyến mãi</h2>
+<?php
+$view->render('faq-list', [
+    'items' => [
+        ['q' => 'Có thể dùng đồng thời nhiều mã giảm giá không?', 'a' => 'Mỗi đơn hàng thường chỉ áp dụng một mã giảm giá, trừ khi thể lệ chương trình ghi rõ được phép cộng dồn.', 'open' => true],
+        ['q' => 'Giá sỉ có được áp dụng thêm voucher không?', 'a' => 'Tùy chương trình. Một số báo giá dự án đã là mức giá riêng nên không cộng thêm voucher bán lẻ.'],
+        ['q' => 'Khuyến mãi có áp dụng cho tất cả màu và quy cách không?', 'a' => 'Không nhất thiết. Danh sách mã hàng, màu và quy cách áp dụng được ghi trong thể lệ từng chương trình.'],
+        ['q' => 'Sản phẩm khuyến mãi có được xuất hóa đơn VAT không?', 'a' => 'Có. SAHA hỗ trợ xuất hóa đơn theo giá trị thực tế thanh toán và quy định hiện hành.'],
+    ],
+]);
+?>
+</div></section>
 
     <section class="section soft" id="bao-gia"><div class="container"><div class="cta"><div><h3>Khối lượng lớn cần chính sách riêng?</h3><p>Gửi danh sách sản phẩm, số lượng và địa điểm giao hàng để nhận báo giá tối ưu hơn chương trình bán lẻ.</p></div><button class="btn btn-primary" onclick="showToast('Đã ghi nhận yêu cầu báo giá dự án')">Nhận báo giá dự án</button></div></div></section>
   </main>

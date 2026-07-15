@@ -1,4 +1,15 @@
-<div class="breadcrumb"><div class="container"><a href="index.php">Trang chủ</a><span>›</span><a href="danh-sach-tin-tuc.php">Tin tức</a><span>›</span><a href="danh-sach-tin-tuc.php#guide">Hướng dẫn chọn keo</a><span>›</span><b>Cách chọn keo silicone phù hợp</b></div></div>
+<?php
+/** @var \Saha\View $view */
+$view->render('breadcrumb', [
+    'variant' => 'bar',
+    'items' => [
+        ['label' => 'Trang chủ', 'href' => 'index.php'],
+        ['label' => 'Tin tức', 'href' => 'danh-sach-tin-tuc.php'],
+        ['label' => 'Hướng dẫn chọn keo', 'href' => 'danh-sach-tin-tuc.php#guide'],
+        ['label' => 'Cách chọn keo silicone phù hợp'],
+    ],
+]);
+?>
 
 <section class="section"><div class="container article-layout"><article class="article">
   <span class="pill">HƯỚNG DẪN CHỌN KEO</span>

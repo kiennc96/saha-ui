@@ -36,6 +36,7 @@ final class Layout
         $extraJs = $page->extraJs;
         $extraCssFiles = $page->extraCssFiles;
         $extraJsFiles = $page->extraJsFiles;
+        $view = new View($this->webRoot);
 
         require $includes . DIRECTORY_SEPARATOR . 'head.php';
         require $includes . DIRECTORY_SEPARATOR . 'header.php';

@@ -1,0 +1,47 @@
+---
+description: Chuẩn UI SAHA — một cách làm, tái dùng component; cấm mỗi người một kiểu CSS
+alwaysApply: true
+---
+
+# Chuẩn hóa UI (bắt buộc)
+
+Mục tiêu: người khác **hiểu ngay và tiếp tục được**. Không tự invent style/CSS/flow riêng.
+
+## Quyết định stack (một thôi)
+
+| Tầng | Chuẩn hiện tại |
+|------|----------------|
+| View | PHP partial / component |
+| Style | `tokens.css` + `chrome.css` + CSS theo **component/page domain** |
+| JS | `assets/js/lib/*` theo nghiệp vụ; trang chỉ wire |
+
+**Cấm:** Bootstrap + Tailwind + CSS tay song song. Đổi hệ → phải migrate có kế hoạch, không pha.
+
+Chưa dùng Tailwind trong repo này cho đến khi team thống nhất migrate có chủ đích.
+
+## Component trước, trang sau
+
+1. UI lặp lại (card SP, card tin, FAQ, breadcrumb, CTA…) → `web/includes/components/{ten}.php`.
+2. Trang (`content/*.php`) **ghép** component, không copy-paste HTML/CSS mới.
+3. Thêm UI mới: tạo/ cập nhật component → rồi mới dùng ở trang.
+
+## CSS — một quy ước đặt tên
+
+- Token màu/spacing/font chỉ trong `tokens.css` (`--blue`, `--container`…).
+- Chrome site chỉ trong `chrome.css`.
+- Style khối UI: file `assets/css/components/{ten}.css` **hoặc** block rõ trong domain page (`news.css`, …) — **không** nhét style “một lần dùng” lung tung trong nhiều file.
+- Class theo khối: `.news-card`, `.product-card`, `.faq-item` — **không** đặt `.box`, `.item`, `.wrapper` mơ hồ.
+- **Cấm** mỗi người tự tạo “hệ” mới (inline style hàng loạt, CSS-in-JS ad-hoc, framework khác).
+
+## Khi muốn sửa giao diện
+
+1. Tìm component / class đã có → sửa **một chỗ**.
+2. Không fork bản copy trong trang khác.
+3. Không thêm stylesheet “temp-fix.css” / “new-style.css” cá nhân.
+
+## Checklist PR / task UI
+
+- [ ] Có tái dùng component thay vì copy HTML?
+- [ ] Class/token theo chuẩn hiện có?
+- [ ] Không thêm framework/cách viết CSS thứ hai?
+- [ ] JS mới nằm đúng `lib/` hoặc page wire mỏng?

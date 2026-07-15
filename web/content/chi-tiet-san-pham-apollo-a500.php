@@ -1,4 +1,15 @@
-<div class="breadcrumb"><div class="container"><a href="index.php">Trang chủ</a><span>›</span><a href="san-pham.php">Sản phẩm</a><span>›</span><a href="san-pham.php">Keo silicone</a><span>›</span><b>Apollo Silicone A500</b></div></div>
+<?php
+/** @var \Saha\View $view */
+$view->render('breadcrumb', [
+    'variant' => 'bar',
+    'items' => [
+        ['label' => 'Trang chủ', 'href' => 'index.php'],
+        ['label' => 'Sản phẩm', 'href' => 'san-pham.php'],
+        ['label' => 'Keo silicone', 'href' => 'san-pham.php'],
+        ['label' => 'Apollo Silicone A500'],
+    ],
+]);
+?>
 
   <main>
     <section class="product-main"><div class="container product-layout">
@@ -80,12 +91,18 @@
       <article class="product-card"><div class="product-img"><div class="tube"><div class="tube-label" style="border-color:#16a061;color:#16a061">BAMBOO<small>A300</small></div></div></div><h3>Bamboo A300 Silicone axit 300ml</h3><div class="meta">Phù hợp kính và bề mặt không xốp</div><div class="price">65.000đ</div><div class="product-actions"><button onclick="showToast('Đã thêm Bamboo A300 vào giỏ')">🛒</button><button>Xem chi tiết</button></div></article>
     </div></div></section>
 
-    <section class="section" id="faq"><div class="container"><h2 class="section-title">Hỏi đáp về Apollo A500</h2><div class="faq-list">
-      <div class="faq-item open"><button class="faq-q">Apollo A500 dùng cho ngoài trời được không?<span>＋</span></button><div class="faq-a">Có thể dùng cho nhiều hạng mục ngoài trời nhờ khả năng chịu thời tiết và tia UV. Tuy nhiên cần bảo đảm bề mặt sạch, khô và thiết kế khe phù hợp.</div></div>
-      <div class="faq-item"><button class="faq-q">Keo có dùng được cho đá tự nhiên không?<span>＋</span></button><div class="faq-a">Nên thử trên mẫu nhỏ hoặc chọn dòng silicone chuyên dụng cho đá để hạn chế nguy cơ ố màu, đặc biệt với đá sáng màu và đá xốp.</div></div>
-      <div class="faq-item"><button class="faq-q">Bao lâu sau khi bơm keo có thể sử dụng công trình?<span>＋</span></button><div class="faq-a">Keo tạo màng sau khoảng 8–15 phút nhưng cần thời gian lưu hóa sâu. Nên tránh tác động cơ học và nước trong ít nhất 24 giờ đầu.</div></div>
-      <div class="faq-item"><button class="faq-q">SAHA có giá sỉ cho đội thợ và đại lý không?<span>＋</span></button><div class="faq-a">Có. Giá sỉ áp dụng theo số lượng, khu vực giao hàng và chính sách từng thời điểm. Gửi yêu cầu báo giá để nhận mức phù hợp.</div></div>
-    </div></div></section>
+    <section class="section" id="faq"><div class="container"><h2 class="section-title">Hỏi đáp về Apollo A500</h2>
+<?php
+$view->render('faq-list', [
+    'items' => [
+        ['q' => 'Apollo A500 dùng cho ngoài trời được không?', 'a' => 'Có thể dùng cho nhiều hạng mục ngoài trời nhờ khả năng chịu thời tiết và tia UV. Tuy nhiên cần bảo đảm bề mặt sạch, khô và thiết kế khe phù hợp.', 'open' => true],
+        ['q' => 'Keo có dùng được cho đá tự nhiên không?', 'a' => 'Nên thử trên mẫu nhỏ hoặc chọn dòng silicone chuyên dụng cho đá để hạn chế nguy cơ ố màu, đặc biệt với đá sáng màu và đá xốp.'],
+        ['q' => 'Bao lâu sau khi bơm keo có thể sử dụng công trình?', 'a' => 'Keo tạo màng sau khoảng 8–15 phút nhưng cần thời gian lưu hóa sâu. Nên tránh tác động cơ học và nước trong ít nhất 24 giờ đầu.'],
+        ['q' => 'SAHA có giá sỉ cho đội thợ và đại lý không?', 'a' => 'Có. Giá sỉ áp dụng theo số lượng, khu vực giao hàng và chính sách từng thời điểm. Gửi yêu cầu báo giá để nhận mức phù hợp.'],
+    ],
+]);
+?>
+</div></section>
 
     <section class="section soft" id="quote"><div class="container"><div class="highlight" style="margin:0"><div><h3>Nhận báo giá Apollo A500 cho công trình</h3><p>Cung cấp số lượng, màu keo và địa điểm giao hàng để SAHA tư vấn mức giá phù hợp.</p></div><div><button class="btn btn-primary" style="width:100%" onclick="showToast('Đã ghi nhận yêu cầu báo giá')">Nhận báo giá ngay →</button></div></div></div></section>
   </main>

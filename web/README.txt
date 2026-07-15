@@ -1,6 +1,8 @@
 # SAHA UI (PHP)
 
-Giao diện SAHA — PHP + JS + CSS refactored theo Single Responsibility, class gắn kết, hàm test được, I/O không block.
+Giao diện SAHA — PHP + JS + CSS theo **một chuẩn chung** (để người khác tiếp tục được).
+
+**Đọc trước khi sửa UI:** [`docs/UI-STANDARD.md`](docs/UI-STANDARD.md)
 
 ## Chạy
 
@@ -16,27 +18,22 @@ Mở http://localhost:8080/index.php
 ```
 web/
   bootstrap.php          # autoload Saha\
-  src/
-    SiteConfig.php       # cấu hình inject được
-    PageContext.php      # meta / flags từng trang
-    Layout.php           # điều phối head→header→nav→content→footer
-    NavState.php         # active nav
-    Html.php / AssetUrl.php
-    Http/CurlClient.php  # HTTP có timeout + getMany song song
-  includes/              # partial view (không chứa logic)
-  content/               # body riêng từng trang
-  assets/
-    css/
-      tokens.css         # biến & reset
-      chrome.css         # topbar/header/nav/footer/toast
-      home|catalog|news|promo|pdp.css
-    js/
-      chrome.js          # Toast + MobileNav + MegaMenu
-      lib/               # class/hàm domain nhỏ, test được
-      index|catalog-page|khuyen-mai|… .js
+  src/                   # class PHP nhỏ
+  includes/              # chrome + components/
+  content/               # body từng trang (ghép component)
+  docs/UI-STANDARD.md    # quy ước UI bắt buộc
+  assets/css/            # tokens + chrome + domain
+  assets/js/lib/         # JS theo nghiệp vụ
 ```
 
-## Rules áp dụng
+## Chuẩn làm việc (tóm tắt)
+
+1. UI lặp → `$view->render()` + `includes/components/` (đã có breadcrumb, news-card, product-card, faq-list).
+2. Style qua token / chrome / domain — không mỗi người một kiểu CSS.
+3. Không pha Bootstrap / Tailwind / framework khác khi chưa migrate cả repo.
+4. JS mới → `assets/js/lib/`.
+
+Chi tiết rules Cursor: `.cursor/rules/ui-consistency.mdc` và các rule SRP/testable/non-blocking.
 
 | Rule | Cách làm trong code |
 |------|---------------------|

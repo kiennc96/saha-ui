@@ -1,6 +1,138 @@
-<main class="page-main"><div class="container breadcrumb"><a href="index.php">Trang chủ</a> / Ứng dụng</div><section class="category-hero" style="--hero-image:url('https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1600&q=80')"><div class="container category-hero-inner"><div><h1>Chọn keo theo ứng dụng</h1><p>Bắt đầu từ vật liệu và điều kiện sử dụng để lựa chọn đúng công nghệ kết dính, giảm lỗi thi công và tối ưu chi phí vòng đời.</p><div class="hero-chips"><span class="hero-chip">Nhôm kính</span><span class="hero-chip">Xây dựng</span><span class="hero-chip">Nội thất</span><span class="hero-chip">Cơ khí</span><span class="hero-chip">Nhà máy</span></div></div></div></section>
+<main class="page-main"><?php
+/** @var \Saha\View $view */
+$view->render('breadcrumb', [
+    'variant' => 'inline',
+    'items' => [
+        ['label' => 'Trang chủ', 'href' => 'index.php'],
+        ['label' => 'Ứng dụng'],
+    ],
+]);
+?><section class="category-hero" style="--hero-image:url('https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1600&q=80')"><div class="container category-hero-inner"><div><h1>Chọn keo theo ứng dụng</h1><p>Bắt đầu từ vật liệu và điều kiện sử dụng để lựa chọn đúng công nghệ kết dính, giảm lỗi thi công và tối ưu chi phí vòng đời.</p><div class="hero-chips"><span class="hero-chip">Nhôm kính</span><span class="hero-chip">Xây dựng</span><span class="hero-chip">Nội thất</span><span class="hero-chip">Cơ khí</span><span class="hero-chip">Nhà máy</span></div></div></div></section>
 <section class="page-section"><div class="container"><h2 class="page-title">Nhóm ứng dụng phổ biến</h2><p class="page-intro">Mỗi nhóm có yêu cầu khác nhau về bám dính, đàn hồi, chịu lực, chịu nhiệt và kháng thời tiết.</p><div class="solution-grid"><article class="solution-card"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Nhôm kính & façade"><div class="solution-copy"><h3>Nhôm kính & façade</h3><p>Trám khe, dán kính, chống rung và đảm bảo độ co giãn ngoài trời.</p><a href="#solution-products">Xem giải pháp →</a></div></article><article class="solution-card"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Xây dựng dân dụng"><div class="solution-copy"><h3>Xây dựng dân dụng</h3><p>Dán vật liệu, trám khe, chống thấm và hoàn thiện công trình.</p><a href="#solution-products">Xem giải pháp →</a></div></article><article class="solution-card"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Nội thất & gỗ"><div class="solution-copy"><h3>Nội thất & gỗ</h3><p>Dán gỗ, laminate, đá, kim loại và chi tiết trang trí.</p><a href="#solution-products">Xem giải pháp →</a></div></article><article class="solution-card"><img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80" alt="Cơ khí & chế tạo"><div class="solution-copy"><h3>Cơ khí & chế tạo</h3><p>Khóa ren, giữ trục, làm kín mặt bích và kết dính kim loại.</p><a href="#solution-products">Xem giải pháp →</a></div></article><article class="solution-card"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="Quảng cáo & biển bảng"><div class="solution-copy"><h3>Quảng cáo & biển bảng</h3><p>Dán mica, alu, formex, kim loại và vật liệu tổng hợp.</p><a href="#solution-products">Xem giải pháp →</a></div></article><article class="solution-card"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Nhà máy & bảo trì"><div class="solution-copy"><h3>Nhà máy & bảo trì</h3><p>Sửa chữa nhanh, chống rò rỉ, bôi trơn và bảo trì thiết bị.</p><a href="#solution-products">Xem giải pháp →</a></div></article></div></div></section>
 <section class="page-section white"><div class="container"><h2 class="page-title">4 bước chọn đúng giải pháp</h2><div class="guide-steps"><div class="guide-step"><h3>Xác định vật liệu</h3><p>Kính, nhôm, thép, bê tông, đá, gỗ, nhựa hay vật liệu hỗn hợp.</p></div><div class="guide-step"><h3>Xác định môi trường</h3><p>Trong nhà, ngoài trời, ẩm ướt, nhiệt độ cao hoặc tiếp xúc hóa chất.</p></div><div class="guide-step"><h3>Xác định tải trọng</h3><p>Trám kín, dán trang trí, chịu rung, chịu lực hoặc kết cấu.</p></div><div class="guide-step"><h3>Kiểm tra tương thích</h3><p>Thử mẫu, đọc TDS và tuân thủ thời gian đóng rắn trước nghiệm thu.</p></div></div></div></section>
-<section class="page-section" id="solution-products"><div class="container"><h2 class="page-title">Sản phẩm được chọn nhiều theo ứng dụng</h2><div class="catalog-products"><article class="product" data-product="silicone apollo"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=500&q=80" alt="Apollo Silicone A500"></div><h3>Apollo Silicone A500</h3><div class="meta">Keo silicone trung tính<br>Chai 300ml</div><div class="price">85.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article><article class="product" data-product="silicone wacker"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80" alt="Wacker GP-N"></div><h3>Wacker GP-N</h3><div class="meta">Keo silicone đa năng<br>Chai 300ml</div><div class="price">120.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article><article class="product" data-product="congnghiep loctite"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80" alt="Loctite 243"></div><h3>Loctite 243</h3><div class="meta">Keo khóa ren trung bình<br>Chai 50ml</div><div class="price">220.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article><article class="product" data-product="silicone bamboo"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80" alt="Bamboo A300"></div><h3>Bamboo A300</h3><div class="meta">Keo silicone axit<br>Chai 300ml</div><div class="price">65.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article><article class="product" data-product="xaydung xtraseal"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80" alt="X’traseal MC-808"></div><h3>X’traseal MC-808</h3><div class="meta">Keo trám đa năng<br>Tuýp 450ml</div><div class="price">45.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article><article class="product" data-product="sonxit atm"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=500&q=80" alt="Sơn xịt ATM"></div><h3>Sơn xịt ATM</h3><div class="meta">Sơn acrylic<br>Chai 400ml</div><div class="price">25.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article><article class="product" data-product="foam soudal"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=500&q=80" alt="Soudal PU Foam"></div><h3>Soudal PU Foam</h3><div class="meta">Foam bọt nở<br>Chai 750ml</div><div class="price">145.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article><article class="product" data-product="chongtham sigee"><div class="badge-row"><span class="mini-badge">Bán chạy</span><span class="mini-badge blue">Chính hãng</span></div><div class="product-image"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=500&q=80" alt="Keo chống thấm Sigee"></div><h3>Keo chống thấm Sigee</h3><div class="meta">Keo trám chống thấm<br>Thùng 5kg</div><div class="price">590.000đ</div><div class="stock">Còn hàng · Giao nhanh</div><div class="card-actions"><button class="cart-btn" onclick="showToast('Đã thêm vào giỏ')">🛒</button><button class="consult-btn" onclick="showToast('Đã gửi yêu cầu tư vấn')">Nhận tư vấn</button></div></article></div></div></section>
+<section class="page-section" id="solution-products"><div class="container"><h2 class="page-title">Sản phẩm được chọn nhiều theo ứng dụng</h2><div class="catalog-products">
+<?php
+$catalogProducts = [
+    [
+        'dataProduct' => 'silicone apollo',
+        'title' => 'Apollo Silicone A500',
+        'image' => 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'Apollo Silicone A500',
+        'metaHtml' => 'Keo silicone trung tính<br>Chai 300ml',
+        'price' => '85.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+    [
+        'dataProduct' => 'silicone wacker',
+        'title' => 'Wacker GP-N',
+        'image' => 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'Wacker GP-N',
+        'metaHtml' => 'Keo silicone đa năng<br>Chai 300ml',
+        'price' => '120.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+    [
+        'dataProduct' => 'congnghiep loctite',
+        'title' => 'Loctite 243',
+        'image' => 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'Loctite 243',
+        'metaHtml' => 'Keo khóa ren trung bình<br>Chai 50ml',
+        'price' => '220.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+    [
+        'dataProduct' => 'silicone bamboo',
+        'title' => 'Bamboo A300',
+        'image' => 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'Bamboo A300',
+        'metaHtml' => 'Keo silicone axit<br>Chai 300ml',
+        'price' => '65.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+    [
+        'dataProduct' => 'xaydung xtraseal',
+        'title' => 'X’traseal MC-808',
+        'image' => 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'X’traseal MC-808',
+        'metaHtml' => 'Keo trám đa năng<br>Tuýp 450ml',
+        'price' => '45.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+    [
+        'dataProduct' => 'sonxit atm',
+        'title' => 'Sơn xịt ATM',
+        'image' => 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'Sơn xịt ATM',
+        'metaHtml' => 'Sơn acrylic<br>Chai 400ml',
+        'price' => '25.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+    [
+        'dataProduct' => 'foam soudal',
+        'title' => 'Soudal PU Foam',
+        'image' => 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'Soudal PU Foam',
+        'metaHtml' => 'Foam bọt nở<br>Chai 750ml',
+        'price' => '145.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+    [
+        'dataProduct' => 'chongtham sigee',
+        'title' => 'Keo chống thấm Sigee',
+        'image' => 'https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=500&q=80',
+        'alt' => 'Keo chống thấm Sigee',
+        'metaHtml' => 'Keo trám chống thấm<br>Thùng 5kg',
+        'price' => '590.000đ',
+        'stock' => 'Còn hàng · Giao nhanh',
+        'badges' => [
+            ['label' => 'Bán chạy'],
+            ['label' => 'Chính hãng', 'tone' => 'blue'],
+        ],
+    ],
+];
+foreach ($catalogProducts as $product) {
+    $view->render('product-card', $product);
+}
+?>
+</div></div></section>
 <section class="page-section white"><div class="container"><div class="feature-banner"><div class="feature-banner-copy"><h2>Gửi ảnh hạng mục để nhận đề xuất</h2><p>Chỉ cần cung cấp ảnh, kích thước khe, vật liệu và điều kiện sử dụng. SAHA sẽ gợi ý sản phẩm, phụ kiện và quy trình thi công.</p><a class="btn btn-primary" href="#consult">Gửi yêu cầu tư vấn →</a></div><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80" alt="Tư vấn ứng dụng keo công nghiệp"></div></div></section>
-<section class="page-section" id="faq"><div class="container"><h2 class="page-title">Câu hỏi thường gặp</h2><div class="faq-list"><div class="faq-item"><button class="faq-q">Cần cung cấp thông tin gì để được tư vấn đúng keo?<span>＋</span></button><div class="faq-a">Vật liệu cần dán hoặc trám, điều kiện trong nhà hay ngoài trời, nhiệt độ, tải trọng, độ co giãn và hình ảnh vị trí thi công.</div></div><div class="faq-item"><button class="faq-q">Có cần dùng sơn lót primer trước khi bắn keo không?<span>＋</span></button><div class="faq-a">Tùy bề mặt và loại keo. Một số vật liệu xốp, bề mặt khó bám hoặc yêu cầu kỹ thuật cao cần primer để ổn định độ bám.</div></div><div class="faq-item"><button class="faq-q">Có thể dùng một loại keo cho mọi ứng dụng không?<span>＋</span></button><div class="faq-a">Không nên. Mỗi loại keo có giới hạn về vật liệu, nhiệt độ, độ co giãn, chịu lực và khả năng kháng hóa chất.</div></div><div class="faq-item"><button class="faq-q">SAHA có hỗ trợ hướng dẫn thi công không?<span>＋</span></button><div class="faq-a">Có. SAHA cung cấp hướng dẫn chuẩn bị bề mặt, định mức, thời gian khô và lưu ý an toàn theo sản phẩm.</div></div></div></div></section><section class="page-section" id="consult"><div class="container"><div class="cta-strip"><div><h2>Cần chọn keo cho hạng mục cụ thể?</h2><p>Đội ngũ kỹ thuật sẽ tư vấn sản phẩm, định mức và phương án thi công.</p></div><button class="btn" onclick="showToast('Đã ghi nhận yêu cầu tư vấn ứng dụng')">Tư vấn miễn phí →</button></div></div></section></main>
+<section class="page-section" id="faq"><div class="container"><h2 class="page-title">Câu hỏi thường gặp</h2>
+<?php
+$view->render('faq-list', [
+    'items' => [
+        ['q' => 'Cần cung cấp thông tin gì để được tư vấn đúng keo?', 'a' => 'Vật liệu cần dán hoặc trám, điều kiện trong nhà hay ngoài trời, nhiệt độ, tải trọng, độ co giãn và hình ảnh vị trí thi công.'],
+        ['q' => 'Có cần dùng sơn lót primer trước khi bắn keo không?', 'a' => 'Tùy bề mặt và loại keo. Một số vật liệu xốp, bề mặt khó bám hoặc yêu cầu kỹ thuật cao cần primer để ổn định độ bám.'],
+        ['q' => 'Có thể dùng một loại keo cho mọi ứng dụng không?', 'a' => 'Không nên. Mỗi loại keo có giới hạn về vật liệu, nhiệt độ, độ co giãn, chịu lực và khả năng kháng hóa chất.'],
+        ['q' => 'SAHA có hỗ trợ hướng dẫn thi công không?', 'a' => 'Có. SAHA cung cấp hướng dẫn chuẩn bị bề mặt, định mức, thời gian khô và lưu ý an toàn theo sản phẩm.'],
+    ],
+]);
+?>
+</div></section><section class="page-section" id="consult"><div class="container"><div class="cta-strip"><div><h2>Cần chọn keo cho hạng mục cụ thể?</h2><p>Đội ngũ kỹ thuật sẽ tư vấn sản phẩm, định mức và phương án thi công.</p></div><button class="btn" onclick="showToast('Đã ghi nhận yêu cầu tư vấn ứng dụng')">Tư vấn miễn phí →</button></div></div></section></main>

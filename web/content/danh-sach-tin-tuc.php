@@ -1,4 +1,16 @@
-<div class="breadcrumb"><div class="container"><a href="index.php">Trang chủ</a><span>›</span><b>Tin tức</b></div></div>
+<?php
+declare(strict_types=1);
+
+/** @var \Saha\View $view */
+
+$view->render('breadcrumb', [
+    'variant' => 'bar',
+    'items' => [
+        ['label' => 'Trang chủ', 'href' => 'index.php'],
+        ['label' => 'Tin tức'],
+    ],
+]);
+?>
 
 <section class="hero"><div class="container hero-grid"><div><span class="pill" style="background:rgba(255,255,255,.16);color:#fff">TRUNG TÂM KIẾN THỨC SAHA</span><h1>Tin tức, hướng dẫn và kinh nghiệm chọn keo</h1><p>Cập nhật kiến thức thi công, cách chọn đúng sản phẩm, xu hướng vật liệu và hoạt động mới nhất từ hệ thống SAHA.</p></div><div class="hero-card"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80" alt="Tin tức ngành xây dựng"></div></div></section>
 
@@ -13,11 +25,62 @@
 </div></div></section>
 
 <section class="section soft" id="guide"><div class="container content-layout"><main><h2 class="section-title">Bài viết mới nhất</h2><div class="news-list">
-  <article class="news-card"><a href="chi-tiet-tin-tuc.php"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80" alt="Chọn keo silicone"></a><div><span class="pill">HƯỚNG DẪN CHỌN KEO</span><h3><a href="chi-tiet-tin-tuc.php">Cách chọn keo silicone phù hợp theo từng vật liệu</a></h3><p>Hướng dẫn nhận biết loại keo, vật liệu tương thích, môi trường sử dụng và các tiêu chí cần kiểm tra trước khi mua.</p><div class="meta"><span>06/07/2026</span><span>•</span><span>8 phút đọc</span><span>•</span><span>1.240 lượt xem</span></div></div></article>
-  <article class="news-card" id="tech"><a href="chi-tiet-tin-tuc.php"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" alt="Thi công keo chống thấm"></a><div><span class="pill">KIẾN THỨC KỸ THUẬT</span><h3><a href="chi-tiet-tin-tuc.php">5 lỗi khiến đường keo chống thấm nhanh bong tróc</a></h3><p>Từ khâu vệ sinh bề mặt, thiết kế khe cho đến thời gian chờ lưu hóa: những lỗi nhỏ có thể làm giảm đáng kể tuổi thọ mối nối.</p><div class="meta"><span>04/07/2026</span><span>•</span><span>6 phút đọc</span></div></div></article>
-  <article class="news-card" id="company"><a href="chi-tiet-tin-tuc.php"><img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=700&q=80" alt="Kho SAHA"></a><div><span class="pill">TIN SAHA</span><h3><a href="chi-tiet-tin-tuc.php">SAHA mở rộng năng lực kho vận và giao hàng toàn quốc</a></h3><p>Hệ thống kho mới giúp tăng lượng hàng sẵn có, tối ưu thời gian xử lý đơn và hỗ trợ tốt hơn cho khách hàng công trình.</p><div class="meta"><span>01/07/2026</span><span>•</span><span>4 phút đọc</span></div></div></article>
-  <article class="news-card" id="market"><a href="chi-tiet-tin-tuc.php"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" alt="Xu hướng xây dựng"></a><div><span class="pill">THỊ TRƯỜNG</span><h3><a href="chi-tiet-tin-tuc.php">Xu hướng vật liệu trám kín hiệu suất cao trong xây dựng hiện đại</a></h3><p>Các công trình ngày càng ưu tiên vật liệu có độ bền thời tiết, ít phát thải và tương thích nhiều bề mặt.</p><div class="meta"><span>28/06/2026</span><span>•</span><span>7 phút đọc</span></div></div></article>
-  <article class="news-card" id="case"><a href="chi-tiet-tin-tuc.php"><img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=700&q=80" alt="Công trình nhôm kính"></a><div><span class="pill">CÔNG TRÌNH THỰC TẾ</span><h3><a href="chi-tiet-tin-tuc.php">Giải pháp silicone cho hệ cửa nhôm kính tại công trình dân dụng</a></h3><p>Phân tích cách lựa chọn màu, định mức và quy trình thi công để đường keo đạt thẩm mỹ và độ bền lâu dài.</p><div class="meta"><span>24/06/2026</span><span>•</span><span>9 phút đọc</span></div></div></article>
+<?php
+$newsCards = [
+    [
+        'href' => 'chi-tiet-tin-tuc.php',
+        'image' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80',
+        'alt' => 'Chọn keo silicone',
+        'pill' => 'HƯỚNG DẪN CHỌN KEO',
+        'title' => 'Cách chọn keo silicone phù hợp theo từng vật liệu',
+        'excerpt' => 'Hướng dẫn nhận biết loại keo, vật liệu tương thích, môi trường sử dụng và các tiêu chí cần kiểm tra trước khi mua.',
+        'meta' => ['06/07/2026', '8 phút đọc', '1.240 lượt xem'],
+    ],
+    [
+        'id' => 'tech',
+        'href' => 'chi-tiet-tin-tuc.php',
+        'image' => 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80',
+        'alt' => 'Thi công keo chống thấm',
+        'pill' => 'KIẾN THỨC KỸ THUẬT',
+        'title' => '5 lỗi khiến đường keo chống thấm nhanh bong tróc',
+        'excerpt' => 'Từ khâu vệ sinh bề mặt, thiết kế khe cho đến thời gian chờ lưu hóa: những lỗi nhỏ có thể làm giảm đáng kể tuổi thọ mối nối.',
+        'meta' => ['04/07/2026', '6 phút đọc'],
+    ],
+    [
+        'id' => 'company',
+        'href' => 'chi-tiet-tin-tuc.php',
+        'image' => 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=700&q=80',
+        'alt' => 'Kho SAHA',
+        'pill' => 'TIN SAHA',
+        'title' => 'SAHA mở rộng năng lực kho vận và giao hàng toàn quốc',
+        'excerpt' => 'Hệ thống kho mới giúp tăng lượng hàng sẵn có, tối ưu thời gian xử lý đơn và hỗ trợ tốt hơn cho khách hàng công trình.',
+        'meta' => ['01/07/2026', '4 phút đọc'],
+    ],
+    [
+        'id' => 'market',
+        'href' => 'chi-tiet-tin-tuc.php',
+        'image' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
+        'alt' => 'Xu hướng xây dựng',
+        'pill' => 'THỊ TRƯỜNG',
+        'title' => 'Xu hướng vật liệu trám kín hiệu suất cao trong xây dựng hiện đại',
+        'excerpt' => 'Các công trình ngày càng ưu tiên vật liệu có độ bền thời tiết, ít phát thải và tương thích nhiều bề mặt.',
+        'meta' => ['28/06/2026', '7 phút đọc'],
+    ],
+    [
+        'id' => 'case',
+        'href' => 'chi-tiet-tin-tuc.php',
+        'image' => 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=700&q=80',
+        'alt' => 'Công trình nhôm kính',
+        'pill' => 'CÔNG TRÌNH THỰC TẾ',
+        'title' => 'Giải pháp silicone cho hệ cửa nhôm kính tại công trình dân dụng',
+        'excerpt' => 'Phân tích cách lựa chọn màu, định mức và quy trình thi công để đường keo đạt thẩm mỹ và độ bền lâu dài.',
+        'meta' => ['24/06/2026', '9 phút đọc'],
+    ],
+];
+foreach ($newsCards as $card) {
+    $view->render('news-card', $card);
+}
+?>
 </div><div class="pagination"><a href="#">‹</a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">›</a></div></main>
 <aside>
   <div class="sidebar-box"><h3>Chuyên mục</h3><div class="category-list"><a href="#guide"><span>Hướng dẫn chọn keo</span><b>24</b></a><a href="#tech"><span>Kiến thức kỹ thuật</span><b>18</b></a><a href="#company"><span>Tin SAHA</span><b>12</b></a><a href="#market"><span>Thị trường</span><b>9</b></a><a href="#case"><span>Công trình thực tế</span><b>15</b></a></div></div>
