@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/includes/config.php';
+require __DIR__ . '/bootstrap.php';
 
-$pageTitle = 'Thương hiệu keo dán chính hãng | SAHA';
-$pageDescription = 'Tra cứu thương hiệu Apollo, Wacker, Loctite, Bamboo, ATM, Soudal, Sika và nhiều hãng keo dán chính hãng.';
-$activeNav = 'thuong-hieu';
-$pageCss = 'catalog.css';
-$searchPlaceholder = 'Bạn cần tìm keo gì? (Ví dụ: Silicone, Apollo, X\'traseal...)';
-$showSuggest = false;
-$showFloatTools = true;
-$extraJs = 'thuong-hieu.js';
+use Saha\Layout;
+use Saha\PageContext;
 
-require __DIR__ . '/includes/head.php';
-require __DIR__ . '/includes/header.php';
-require __DIR__ . '/includes/nav.php';
-require __DIR__ . '/content/thuong-hieu.php';
-require __DIR__ . '/includes/footer.php';
+$layout = new Layout($sahaConfig, __DIR__);
+$layout->render(
+    new PageContext(
+        title: 'Thương hiệu keo dán chính hãng | SAHA',
+        description: 'Tra cứu thương hiệu Apollo, Wacker, Loctite, Bamboo, ATM, Soudal, Sika và nhiều hãng keo dán chính hãng.',
+        activeNav: 'thuong-hieu',
+        pageCss: 'catalog.css',
+        showFloatTools: true,
+        extraJs: 'catalog-page.js',
+    ),
+    'content/thuong-hieu.php'
+);

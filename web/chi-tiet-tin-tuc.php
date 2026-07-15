@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/includes/config.php';
+require __DIR__ . '/bootstrap.php';
 
-$pageTitle = 'Cách chọn keo silicone phù hợp theo từng vật liệu | SAHA';
-$pageDescription = 'Hướng dẫn cách chọn keo silicone phù hợp theo vật liệu, môi trường và yêu cầu kỹ thuật.';
-$activeNav = 'tin-tuc';
-$pageCss = 'news.css';
-$searchPlaceholder = 'Tìm bài viết, sản phẩm, hướng dẫn...';
-$showSuggest = false;
-$showFloatTools = false;
-$extraJs = null;
+use Saha\Layout;
+use Saha\PageContext;
 
-require __DIR__ . '/includes/head.php';
-require __DIR__ . '/includes/header.php';
-require __DIR__ . '/includes/nav.php';
-require __DIR__ . '/content/chi-tiet-tin-tuc.php';
-require __DIR__ . '/includes/footer.php';
+$layout = new Layout($sahaConfig, __DIR__);
+$layout->render(
+    new PageContext(
+        title: 'Cách chọn keo silicone phù hợp theo từng vật liệu | SAHA',
+        description: 'Hướng dẫn cách chọn keo silicone phù hợp theo vật liệu, môi trường và yêu cầu kỹ thuật.',
+        activeNav: 'tin-tuc',
+        pageCss: 'news.css',
+        showFloatTools: false,
+        extraJs: null,
+    ),
+    'content/chi-tiet-tin-tuc.php'
+);

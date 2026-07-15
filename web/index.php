@@ -1,19 +1,22 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/includes/config.php';
+require __DIR__ . '/bootstrap.php';
 
-$pageTitle = 'SAHA - Tổng kho keo dán';
-$pageDescription = 'SAHA - Tổng kho keo dán, keo silicone, keo xây dựng và keo công nghiệp.';
-$activeNav = 'home';
-$pageCss = 'home.css';
-$searchPlaceholder = 'Bạn cần tìm keo gì? (Ví dụ: Silicone, Apollo, X\'traseal...)';
-$showSuggest = true;
-$showFloatTools = true;
-$extraJs = 'index.js';
+use Saha\Layout;
+use Saha\PageContext;
 
-require __DIR__ . '/includes/head.php';
-require __DIR__ . '/includes/header.php';
-require __DIR__ . '/includes/nav.php';
-require __DIR__ . '/content/index.php';
-require __DIR__ . '/includes/footer.php';
+$layout = new Layout($sahaConfig, __DIR__);
+$layout->render(
+    new PageContext(
+        title: 'SAHA - Tổng kho keo dán',
+        description: 'SAHA - Tổng kho keo dán, keo silicone, keo xây dựng và keo công nghiệp.',
+        activeNav: 'home',
+        pageCss: 'home.css',
+        searchPlaceholder: 'Bạn cần tìm keo gì? (Ví dụ: Silicone, Apollo, X\'traseal...)',
+        showSuggest: true,
+        showFloatTools: true,
+        extraJs: 'index.js',
+    ),
+    'content/index.php'
+);

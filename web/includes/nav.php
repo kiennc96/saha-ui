@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
-/** Menu điều hướng chính — mega menu dùng chung mọi trang */
+
+/** @var \Saha\NavState $nav */
 ?>
   <nav class="nav" id="mainNav">
     <div class="container nav-inner">
@@ -13,7 +14,7 @@ declare(strict_types=1);
         </div>
       </div>
       <div class="nav-links">
-        <div class="nav-menu-item<?= saha_nav_active('san-pham') ?>">
+        <div class="nav-menu-item<?= $nav->activeClass('san-pham') ?>">
           <button class="nav-menu-button" type="button" aria-expanded="false">Sản phẩm <span class="nav-caret">⌄</span></button>
           <div class="nav-mega">
             <div>
@@ -37,7 +38,7 @@ declare(strict_types=1);
             </div>
           </div>
         </div>
-        <div class="nav-menu-item<?= saha_nav_active('thuong-hieu') ?>">
+        <div class="nav-menu-item<?= $nav->activeClass('thuong-hieu') ?>">
           <button class="nav-menu-button" type="button" aria-expanded="false">Thương hiệu <span class="nav-caret">⌄</span></button>
           <div class="nav-mega">
             <div>
@@ -61,7 +62,7 @@ declare(strict_types=1);
             </div>
           </div>
         </div>
-        <div class="nav-menu-item<?= saha_nav_active('ung-dung') ?>">
+        <div class="nav-menu-item<?= $nav->activeClass('ung-dung') ?>">
           <button class="nav-menu-button" type="button" aria-expanded="false">Ứng dụng <span class="nav-caret">⌄</span></button>
           <div class="nav-mega">
             <div>
@@ -85,8 +86,8 @@ declare(strict_types=1);
             </div>
           </div>
         </div>
-        <a class="<?= trim(saha_nav_active('khuyen-mai')) ?>" href="khuyen-mai.php">Khuyến mãi <span class="hot">Hot</span></a>
-        <a class="<?= trim(saha_nav_active('tin-tuc')) ?>" href="danh-sach-tin-tuc.php">Tin tức</a>
+        <a class="<?= trim($nav->activeClass('khuyen-mai')) ?>" href="khuyen-mai.php">Khuyến mãi <span class="hot">Hot</span></a>
+        <a class="<?= trim($nav->activeClass('tin-tuc')) ?>" href="danh-sach-tin-tuc.php">Tin tức</a>
         <a href="#footer">Liên hệ</a>
       </div>
     </div>

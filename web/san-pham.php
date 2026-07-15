@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/includes/config.php';
+require __DIR__ . '/bootstrap.php';
 
-$pageTitle = 'Danh mục sản phẩm keo dán | SAHA';
-$pageDescription = 'Danh mục keo silicone, keo xây dựng, keo công nghiệp, chống thấm, foam và phụ trợ chính hãng.';
-$activeNav = 'san-pham';
-$pageCss = 'catalog.css';
-$searchPlaceholder = 'Bạn cần tìm keo gì? (Ví dụ: Silicone, Apollo, X\'traseal...)';
-$showSuggest = false;
-$showFloatTools = true;
-$extraJs = 'san-pham.js';
+use Saha\Layout;
+use Saha\PageContext;
 
-require __DIR__ . '/includes/head.php';
-require __DIR__ . '/includes/header.php';
-require __DIR__ . '/includes/nav.php';
-require __DIR__ . '/content/san-pham.php';
-require __DIR__ . '/includes/footer.php';
+$layout = new Layout($sahaConfig, __DIR__);
+$layout->render(
+    new PageContext(
+        title: 'Danh mục sản phẩm keo dán | SAHA',
+        description: 'Danh mục sản phẩm keo silicone, keo xây dựng, keo công nghiệp tại Tổng kho keo dán SAHA.',
+        activeNav: 'san-pham',
+        pageCss: 'catalog.css',
+        showFloatTools: true,
+        extraJs: 'catalog-page.js',
+    ),
+    'content/san-pham.php'
+);

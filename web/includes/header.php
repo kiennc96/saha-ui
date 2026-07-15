@@ -1,12 +1,14 @@
 <?php
 declare(strict_types=1);
-/** Topbar + header (logo, search, actions) */
+
+/** @var \Saha\PageContext $page */
+/** @var \Saha\SiteConfig $config */
 ?>
   <div class="topbar">
     <div class="container inner">
       <div class="topbar-list">
-        <span>☎ Hotline Hà Nội: <b><?= SAHA_HOTLINE_HN ?></b></span>
-        <span>☎ Hotline HCM: <b><?= SAHA_HOTLINE_HCM ?></b></span>
+        <span>☎ Hotline Hà Nội: <b><?= \Saha\Html::e($config->hotlineHn) ?></b></span>
+        <span>☎ Hotline HCM: <b><?= \Saha\Html::e($config->hotlineHcm) ?></b></span>
         <span>🚚 Giao hàng toàn quốc</span>
         <span>▣ Xuất hóa đơn VAT</span>
       </div>
@@ -19,10 +21,10 @@ declare(strict_types=1);
 
   <header class="main-header">
     <div class="container header-row">
-      <a class="logo" href="index.php">SAHA<small>TỔNG KHO KEO DÁN</small></a>
+      <a class="logo" href="index.php"><?= \Saha\Html::e($config->siteName) ?><small>TỔNG KHO KEO DÁN</small></a>
       <div class="search-wrap">
         <form class="search" onsubmit="event.preventDefault();showToast('Đang tìm kiếm...')">
-          <input aria-label="Tìm kiếm" placeholder="<?= saha_e($searchPlaceholder) ?>">
+          <input aria-label="Tìm kiếm" placeholder="<?= \Saha\Html::e($page->searchPlaceholder) ?>">
           <select aria-label="Danh mục">
             <option>Tất cả danh mục</option>
             <option>Keo silicone</option>
@@ -31,7 +33,7 @@ declare(strict_types=1);
           </select>
           <button type="submit" aria-label="Tìm kiếm">⌕</button>
         </form>
-        <?php if (!empty($showSuggest)): ?>
+        <?php if ($page->showSuggest): ?>
         <div class="search-suggest">
           <b>Gợi ý phổ biến</b>
           <div class="suggest-item">Apollo Silicone A500</div>

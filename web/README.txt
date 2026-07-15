@@ -1,39 +1,8 @@
 # SAHA UI (PHP)
 
-Giao diện tĩnh SAHA, đã tách thành phần PHP dùng chung.
+Giao diện SAHA — PHP + JS + CSS refactored theo Single Responsibility, class gắn kết, hàm test được, I/O không block.
 
-## Cấu trúc
-
-```
-web/
-  includes/          # Thành phần dùng chung
-    config.php       # Cấu hình & helpers
-    head.php         # <head>, load CSS
-    header.php       # Topbar + logo + search
-    nav.php          # Menu / mega menu
-    footer.php       # Footer + float tools + toast
-  content/           # Nội dung riêng từng trang
-  assets/css/        # CSS theo nhóm trang
-  assets/js/         # chrome.js + JS riêng trang
-  *.php              # Entry point từng trang
-```
-
-## Trang
-
-| File | Mô tả |
-|------|--------|
-| `index.php` | Trang chủ |
-| `san-pham.php` | Danh mục sản phẩm |
-| `thuong-hieu.php` | Thương hiệu |
-| `ung-dung.php` | Ứng dụng |
-| `khuyen-mai.php` | Khuyến mãi |
-| `danh-sach-tin-tuc.php` | Danh sách tin tức |
-| `chi-tiet-tin-tuc.php` | Chi tiết tin tức |
-| `chi-tiet-san-pham-apollo-a500.php` | Chi tiết sản phẩm |
-
-## Chạy local
-
-Cần PHP (Apache/Nginx hoặc built-in server):
+## Chạy
 
 ```bash
 cd web
@@ -42,25 +11,56 @@ php -S localhost:8080
 
 Mở http://localhost:8080/index.php
 
-## Thêm trang mới
+## Cấu trúc
 
-1. Tạo `content/ten-trang.php` (chỉ phần nội dung giữa nav và footer)
-2. Tạo `ten-trang.php`:
+```
+web/
+  bootstrap.php          # autoload Saha\
+  src/
+    SiteConfig.php       # cấu hình inject được
+    PageContext.php      # meta / flags từng trang
+    Layout.php           # điều phối head→header→nav→content→footer
+    NavState.php         # active nav
+    Html.php / AssetUrl.php
+    Http/CurlClient.php  # HTTP có timeout + getMany song song
+  includes/              # partial view (không chứa logic)
+  content/               # body riêng từng trang
+  assets/
+    css/
+      tokens.css         # biến & reset
+      chrome.css         # topbar/header/nav/footer/toast
+      home|catalog|news|promo|pdp.css
+    js/
+      chrome.js          # Toast + MobileNav + MegaMenu
+      lib/               # class/hàm domain nhỏ, test được
+      index|catalog-page|khuyen-mai|… .js
+```
+
+## Rules áp dụng
+
+| Rule | Cách làm trong code |
+|------|---------------------|
+| SRP | PHP class + JS `lib/*` mỗi file một việc; CSS tách tokens/chrome/page |
+| Class gắn kết | `Toast`, `CountdownTicker`, `SiliconeCalculator`, `Layout`… — không god class |
+| Test được | Core thuần (`estimateBottles`, `getRemainingMs`, `productMatchesFilters`); DOM/toast inject |
+| Non-blocking | JS render trang chủ theo `requestAnimationFrame` queue; scroll passive; `CurlClient` timeout + multi |
+
+## Thêm trang
 
 ```php
 <?php
-require __DIR__ . '/includes/config.php';
-$pageTitle = '...';
-$pageDescription = '...';
-$activeNav = 'san-pham'; // home | san-pham | thuong-hieu | ung-dung | khuyen-mai | tin-tuc
-$pageCss = 'catalog.css'; // home | catalog | news | promo | pdp
-$searchPlaceholder = '...';
-$showSuggest = false;
-$showFloatTools = true;
-$extraJs = null; // hoặc 'ten-trang.js'
-require __DIR__ . '/includes/head.php';
-require __DIR__ . '/includes/header.php';
-require __DIR__ . '/includes/nav.php';
-require __DIR__ . '/content/ten-trang.php';
-require __DIR__ . '/includes/footer.php';
+require __DIR__ . '/bootstrap.php';
+use Saha\Layout;
+use Saha\PageContext;
+
+(new Layout($sahaConfig, __DIR__))->render(
+    new PageContext(
+        title: '...',
+        description: '...',
+        activeNav: 'san-pham',
+        pageCss: 'catalog.css',
+        extraJs: 'catalog-page.js',
+    ),
+    'content/ten-trang.php'
+);
 ```

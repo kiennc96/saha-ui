@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/includes/config.php';
+require __DIR__ . '/bootstrap.php';
 
-$pageTitle = 'Giải pháp keo dán theo ứng dụng | SAHA';
-$pageDescription = 'Chọn keo theo ứng dụng nhôm kính, xây dựng, nội thất, cơ khí, quảng cáo, nhà máy và bảo trì.';
-$activeNav = 'ung-dung';
-$pageCss = 'catalog.css';
-$searchPlaceholder = 'Bạn cần tìm keo gì? (Ví dụ: Silicone, Apollo, X\'traseal...)';
-$showSuggest = false;
-$showFloatTools = true;
-$extraJs = 'ung-dung.js';
+use Saha\Layout;
+use Saha\PageContext;
 
-require __DIR__ . '/includes/head.php';
-require __DIR__ . '/includes/header.php';
-require __DIR__ . '/includes/nav.php';
-require __DIR__ . '/content/ung-dung.php';
-require __DIR__ . '/includes/footer.php';
+$layout = new Layout($sahaConfig, __DIR__);
+$layout->render(
+    new PageContext(
+        title: 'Giải pháp keo dán theo ứng dụng | SAHA',
+        description: 'Chọn keo theo ứng dụng nhôm kính, xây dựng, nội thất, cơ khí, quảng cáo, nhà máy và bảo trì.',
+        activeNav: 'ung-dung',
+        pageCss: 'catalog.css',
+        showFloatTools: true,
+        extraJs: 'catalog-page.js',
+    ),
+    'content/ung-dung.php'
+);

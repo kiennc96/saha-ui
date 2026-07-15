@@ -1,13 +1,19 @@
 <?php
 declare(strict_types=1);
-/** Footer + float tools + toast + scripts dùng chung */
+
+/** @var \Saha\PageContext $page */
+/** @var \Saha\SiteConfig $config */
+/** @var \Saha\AssetUrl $assets */
+/** @var bool $showFloatTools */
+/** @var string|null $extraJs */
+/** @var list<string> $extraJsFiles */
 ?>
   <footer id="footer">
     <div class="container footer-grid">
       <div>
-        <h4>Tổng kho keo dán SAHA</h4>
+        <h4>Tổng kho keo dán <?= \Saha\Html::e($config->siteName) ?></h4>
         <p>Chuyên cung cấp keo silicone, keo xây dựng, keo công nghiệp, sơn xịt và phụ trợ chính hãng.</p>
-        <p>⌖ Trụ sở: Hà Đông, Hà Nội<br>☎ <?= SAHA_HOTLINE_HN ?><br>✉ <?= SAHA_EMAIL ?></p>
+        <p>⌖ Trụ sở: Hà Đông, Hà Nội<br>☎ <?= \Saha\Html::e($config->hotlineHn) ?><br>✉ <?= \Saha\Html::e($config->email) ?></p>
       </div>
       <div>
         <h4>Sản phẩm</h4>
@@ -56,10 +62,10 @@ declare(strict_types=1);
         </div>
       </div>
     </div>
-    <div class="copyright">© <?= SAHA_YEAR ?> SAHA. All rights reserved.</div>
+    <div class="copyright">© <?= (int) $config->year ?> <?= \Saha\Html::e($config->siteName) ?>. All rights reserved.</div>
   </footer>
 
-  <?php if (!empty($showFloatTools)): ?>
+  <?php if ($showFloatTools): ?>
   <div class="float-tools">
     <button type="button" onclick="showToast('Đang kết nối hotline...')">☎<br>Gọi ngay</button>
     <button type="button" onclick="showToast('Mở Zalo tư vấn')">Zalo</button>
@@ -69,9 +75,12 @@ declare(strict_types=1);
   <?php endif; ?>
 
   <div class="toast" id="toast"></div>
-  <script src="<?= saha_e(saha_asset('js/chrome.js')) ?>"></script>
-  <?php if (!empty($extraJs)): ?>
-  <script src="<?= saha_e(saha_asset('js/' . $extraJs)) ?>"></script>
+  <script type="module" src="<?= \Saha\Html::e($assets->path('js/chrome.js')) ?>"></script>
+  <?php if ($extraJs): ?>
+  <script type="module" src="<?= \Saha\Html::e($assets->path('js/' . $extraJs)) ?>"></script>
   <?php endif; ?>
+  <?php foreach ($extraJsFiles as $jsFile): ?>
+  <script type="module" src="<?= \Saha\Html::e($assets->path('js/' . $jsFile)) ?>"></script>
+  <?php endforeach; ?>
 </body>
 </html>

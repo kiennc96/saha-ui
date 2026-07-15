@@ -1,2 +1,0 @@
-document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>btn.closest('.faq-item').classList.toggle('open')));
-document.querySelectorAll('[data-filter]').forEach(input=>input.addEventListener('change',()=>{const active=[...document.querySelectorAll('[data-filter]:checked')].map(x=>x.value);document.querySelectorAll('[data-product]').forEach(card=>{card.style.display=!active.length||active.some(x=>card.dataset.product.includes(x))?'block':'none'})}));
