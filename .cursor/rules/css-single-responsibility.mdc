@@ -1,0 +1,47 @@
+---
+description: CSS — chia stylesheet theo đơn vị UI/nghiệp vụ nhỏ nhất; Single Responsibility
+globs: "**/*.{css,scss}"
+alwaysApply: false
+---
+
+# CSS: Single Responsibility
+
+Chia CSS rõ ràng theo từng khối UI / nghiệp vụ nhỏ nhất. Mỗi nhóm rule hoặc file chỉ phụ trách **một vùng giao diện**.
+
+## Nguyên tắc
+
+- **Một file / khối = một domain UI**: chrome (topbar/header/nav/footer) ≠ trang chủ ≠ catalog ≠ tin tức ≠ PDP ≠ khuyến mãi.
+- **Nhóm rule theo thành phần**: `.nav…`, `.footer…`, `.news-card…` — không trộn selector của nhiều vùng trong một khối khó bảo trì.
+- **Token dùng chung, skin theo trang**: biến `--blue`, spacing… dùng chung; style trang cụ thể nằm file/page tương ứng (`home.css`, `news.css`, …).
+- **Tránh “god stylesheet”**: không nhét toàn bộ site vào một file ngày càng phình; tách khi một vùng đủ lớn hoặc tái sử dụng được.
+
+## Ví dụ
+
+```css
+/* ❌ BAD — một khối style lẫn nav + article + promo */
+.nav { ... }
+.article-cover { ... }
+.countdown { ... }
+.footer { ... }
+
+/* ✅ GOOD — tách theo đơn vị */
+/* chrome / base: topbar, header, nav, footer, toast */
+/* news.css: breadcrumb tin, hero tin, news-card, sidebar tin */
+/* promo.css: countdown, voucher, filter chương trình */
+```
+
+```css
+/* ❌ BAD — class làm nhiều việc mơ hồ */
+.box { /* vừa card tin, vừa form footer, vừa banner */ }
+
+/* ✅ GOOD — tên theo trách nhiệm UI */
+.news-card { ... }
+.footer-newsletter { ... }
+.promo-banner { ... }
+```
+
+## Khi viết / sửa
+
+1. Sửa nav/footer → chỉ đụng CSS chrome / shared; không “vá” vào file trang không liên quan nếu có thể tách.
+2. Thêm section mới → block/class mới (hoặc file page), không phóng to class cũ đa năng.
+3. Utility dùng lại được thì đặt tên rõ (`container`, `section-title`); component gắn domain (`feature-main`, `mini-news`).

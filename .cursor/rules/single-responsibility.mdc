@@ -1,0 +1,41 @@
+---
+description: Chia code theo hàm nghiệp vụ nhỏ nhất; tuân thủ Single Responsibility Principle
+alwaysApply: true
+---
+
+# Single Responsibility & đơn vị nghiệp vụ nhỏ nhất
+
+Luôn chia code rõ ràng theo từng hàm / đơn vị nghiệp vụ nhỏ nhất. Mỗi hàm, class, file, hoặc component chỉ làm **một việc**.
+
+## Nguyên tắc
+
+- **Một trách nhiệm = một đơn vị**: mỗi hàm/class/file chỉ phụ trách một nghiệp vụ rõ ràng (ví dụ: lấy danh sách tin, render nav, format giá).
+- **Tách sớm**: nếu một khối làm nhiều việc (I/O + tính toán + render + validate), tách thành các hàm nhỏ theo từng bước nghiệp vụ.
+- **Đặt tên theo nghiệp vụ**: tên phản ánh việc đang làm (`getHotlineHn`, `renderNavLinks`, `formatPrice`), không đặt tên chung chung (`handle`, `process`, `doStuff`).
+- **Include/partial PHP**: tái sử dụng theo thành phần UI hoặc nghiệp vụ (header, nav, footer, form báo giá) — không nhét nhiều trách nhiệm vào một file “tất cả”.
+
+## Ví dụ
+
+```php
+// ❌ BAD — một hàm làm nhiều việc
+function handleNewsPage() {
+    $items = queryDb(...);
+    $html = '';
+    foreach ($items as $item) {
+        $html .= '<article>...' . number_format($item['price']) . '</article>';
+    }
+    echo $header . $html . $footer;
+}
+
+// ✅ GOOD — mỗi hàm một trách nhiệm
+function fetchLatestNews(int $limit): array { /* chỉ lấy dữ liệu */ }
+function formatNewsPrice(int $price): string { /* chỉ format */ }
+function renderNewsCard(array $item): string { /* chỉ render 1 card */ }
+function renderNewsList(array $items): string { /* chỉ ghép danh sách */ }
+```
+
+## Khi viết / sửa code
+
+1. Ưu tiên hàm nhỏ, thuần (dễ đọc, dễ test).
+2. Không mở rộng hàm hiện có bằng trách nhiệm mới — tách hàm mới.
+3. File/include mới chỉ chứa logic cùng một domain (nav ≠ footer ≠ tin tức).

@@ -1,0 +1,68 @@
+---
+description: Nhóm nghiệp vụ liên quan thành class; tránh god class / god function
+alwaysApply: true
+---
+
+# Nhóm thành class — không god class / god function
+
+Khi có nhiều hàm cùng domain và cùng trạng thái/dữ liệu, **nhóm thành class** (hoặc module gắn kết). Giữ **Single Responsibility**: class nhỏ, cohesive — không biến thành “thùng chứa tất cả”.
+
+## Khi nào nên thành class
+
+- Nhiều hàm dùng chung cùng state / dữ liệu / tài nguyên (cart, countdown, nav menu).
+- Nghiệp vụ có vòng đời rõ (khởi tạo → cập nhật → hủy).
+- Cần tách API công khai khỏi chi tiết nội bộ.
+
+```js
+// ✅ GOOD — class nhỏ, một domain
+class PromoCountdown {
+  constructor(el, endAt) { ... }
+  getRemainingMs() { ... }
+  render() { ... }
+  start() { ... }
+  stop() { ... }
+}
+```
+
+```php
+// ✅ GOOD
+final class NewsCardRenderer {
+    public function render(array $item): string { ... }
+    public function renderList(array $items): string { ... }
+}
+```
+
+## Khi nào không Ep (tránh class giả)
+
+- Chỉ 1–2 hàm thuần, không state → giữ function/module đơn giản.
+- “Class” chỉ là namespace cho hàm không liên quan → tách module/file, đừng ép class.
+
+## Cấm god class / god function
+
+| Anti-pattern | Dấu hiệu | Cách xử lý |
+|---|---|---|
+| **God class** | Biết / sửa mọi thứ (nav + cart + news + promo…) | Tách class theo domain |
+| **God function** | Hàng trăm dòng, nhiều nhánh, nhiều side-effect | Tách hàm/class nhỏ theo bước nghiệp vụ |
+| **Manager / Helper / Util khổng lồ** | Tên mơ hồ, ngày càng nhét thêm việc | Đổi tên theo domain; tách file |
+
+```js
+// ❌ BAD — god class
+class App {
+  initNav() {}
+  initCart() {}
+  initNews() {}
+  initPromo() {}
+  initEverything() {}
+}
+
+// ❌ BAD — god function
+function handlePage() { /* DOM + API + validate + toast + render tất cả */ }
+```
+
+## Quy tắc nhanh
+
+1. **Cohesion cao**: method trong class phải cùng một lý do để thay đổi.
+2. **API mỏng**: public ít; chi tiết để private/protected.
+3. **Composition > kế thừa sâu**: ghép class nhỏ (`Cart`, `Toast`) thay vì một class cha “làm hết”.
+4. **Giới hạn kích thước**: class phình hoặc method > ~40–50 dòng / nhiều trách nhiệm → tách ngay.
+5. Áp dụng cho **PHP, JS**; CSS thì nhóm theo khối/component class tên rõ — không một “god stylesheet” hay class CSS đa năng.

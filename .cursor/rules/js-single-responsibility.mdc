@@ -1,0 +1,40 @@
+---
+description: JS — chia hàm theo nghiệp vụ nhỏ nhất; Single Responsibility
+globs: "**/*.{js,mjs,cjs}"
+alwaysApply: false
+---
+
+# JavaScript: Single Responsibility
+
+Chia JS rõ ràng theo từng hàm / module nghiệp vụ nhỏ nhất. Mỗi hàm hoặc file chỉ làm **một việc**.
+
+## Nguyên tắc
+
+- **Một hàm = một hành vi**: toast, mở mega menu, countdown, filter sản phẩm, copy voucher — mỗi cái một hàm (hoặc một module).
+- **Tách DOM / logic / data**: không trộn query DOM, tính toán và side-effect trong cùng một hàm dài.
+- **File theo domain**: `chrome.js` (nav/toast) ≠ `khuyen-mai.js` (countdown/voucher) ≠ logic trang sản phẩm.
+- **Đặt tên nghiệp vụ**: `showToast`, `toggleNavMenu`, `updateCountdown`, `copyVoucherCode` — tránh `init`, `setup`, `handleAll`.
+
+## Ví dụ
+
+```js
+// ❌ BAD
+function initPromoPage() {
+  document.querySelectorAll('.faq-q').forEach(/* ... */);
+  setInterval(/* countdown + DOM update + toast */);
+  document.querySelectorAll('.copy').forEach(/* copy + toast + analytics */);
+}
+
+// ✅ GOOD
+function bindFaqToggle(root = document) { /* chỉ FAQ */ }
+function getRemainingMs(endAt) { /* chỉ tính thời gian */ }
+function renderCountdown(el, ms) { /* chỉ cập nhật DOM countdown */ }
+function startCountdown(el, endAt) { /* điều phối getRemainingMs + renderCountdown */ }
+function copyVoucherCode(code) { /* chỉ copy */ }
+```
+
+## Khi viết / sửa
+
+1. Handler sự kiện chỉ ủy quyền sang hàm nghiệp vụ, không chứa toàn bộ logic.
+2. Thêm tính năng → hàm/file mới; không nhét vào `init` khổng lồ.
+3. Dùng chung (toast, nav) đặt trong `chrome.js` / module shared — không copy-paste sang từng trang.
